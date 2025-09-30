@@ -17,13 +17,13 @@ int ft_printf(const char *f, ...)
 
             if (*f == 'd')  
             {
-                d = va_arg(args, int);  
+                d = va_arg(ap, int);  
 
                 ft_putnbr_fd(d, 1);
             }
             else if (*f == 's') 
             {
-                s = va_arg(args, char *); 
+                s = va_arg(ap, char *); 
 
                 ft_putstr_fd(s, 1);
             }
