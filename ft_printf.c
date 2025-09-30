@@ -7,7 +7,7 @@ int ft_printf(const char *f, ...)
     char *s;
     int d;
 
-    va_start(ap, f);  /
+    va_start(ap, f);  
 
     while (*f)
     {
