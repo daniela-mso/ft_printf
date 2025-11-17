@@ -1,41 +1,51 @@
-#include <stdarg.h>
-#include "libftprintf.h" 
+#include "ft_printf.h"
 
-int ft_printf(const char *f, ...)
+static int format_specifier(va_list arguments, char format)
 {
-    va_list ap;
-    char *s;
-    int d;
+	int	count;
 
-    va_start(ap, f);  
-
-    while (*f)
-    {
-        if (*f == '%' && *(f + 1) != '%')  
-        {
-            f++;  
-
-            if (*f == 'd')  
-            {
-                d = va_arg(ap, int);  
-
-                ft_putnbr_fd(d, 1);
-            }
-            else if (*f == 's') 
-            {
-                s = va_arg(ap, char *); 
-
-                ft_putstr_fd(s, 1);
-            }
-            else if (*f == '%') 
-            {
-                ft_putchar_fd('%', 1); 
-            }
-        }
-        f++;  
-    }
-
-    va_end(ap); 
-
+	count = 0;
+	if (format == '%')
+		count += ft_char('%');
+	if (format == 'c')
+		count += ft_char(va_arg(arguments, int));
+	if (format == 's')
+		count += ft_string(va_arg(arguments, char *));
+	if (format == 'i' || format == 'd')
+		count += ft_int(va_arg(arguments, int));
+	// if (format == 'u')
+	// 	count += ft_unsigned(va_arg(arguments, unsigned int));
+	// if (format == 'p')
+	// 	count += ft_ptr(va_arg(arguments, uintptr_t)); // can also be an unsigned long 
+	// if (format == 'x' || format == 'X')
+	// 	count += ft_hexa(va_arg(arguments, unsigned int));
+	
+	return (count);
 }
+
+int ft_printf(const char *format, ...)
+{
+    va_list arguments; 
+	int	count;
+	int i;
+	va_start(arguments, format);
+	count = 0;
+	i = 0;
+
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%')
+		{
+			count += format_specifier(arguments, format[i + 1]);
+			i++;
+		}
+		else
+			count += ft_char(format[i]);
+		i++;
+	}
+	va_end(arguments);
+	return (count);
+}
+
+
 
