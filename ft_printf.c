@@ -13,12 +13,12 @@ static int format_specifier(va_list arguments, char format)
 		count += ft_string(va_arg(arguments, char *));
 	if (format == 'i' || format == 'd')
 		count += ft_int(va_arg(arguments, int));
-	// if (format == 'u')
-	// 	count += ft_unsigned(va_arg(arguments, unsigned int));
-	// if (format == 'p')
-	// 	count += ft_ptr(va_arg(arguments, uintptr_t)); // can also be an unsigned long 
-	// if (format == 'x' || format == 'X')
-	// 	count += ft_hexa(va_arg(arguments, unsigned int));
+	if (format == 'u')
+		count += ft_unsigned(va_arg(arguments, unsigned int));
+	if (format == 'p')
+		count += ft_adress(va_arg(arguments, uintptr_t)); // can also be an unsigned long 
+	if (format == 'x' || format == 'X')
+		count += ft_hexa(va_arg(arguments, unsigned int));
 	
 	return (count);
 }
