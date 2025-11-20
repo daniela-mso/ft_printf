@@ -88,6 +88,10 @@ int main()
 
 
 
+    printf(" %p %p\n", (void*)0, (void*)0);
+    ft_printf(" %p %p\n", (void*)0, (void*)0);
+
+
 
     return 0;
 }

@@ -19,10 +19,15 @@ int	ft_adress(uintptr_t ptr)
 {
 	int count;
 
+	count = 0;
+	if (ptr == 0)
+		count += ft_string("(nil)");
+	else
+	{
 	count = ft_hexa_len_count(ptr);
 	ft_string("0x");
 	count += 2;
 	ft_hexa_putnbr(ptr);
+	}
 	return (count);
 }
-

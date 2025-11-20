@@ -18,7 +18,7 @@ static int format_specifier(va_list arguments, char format)
 	if (format == 'p')
 		count += ft_adress(va_arg(arguments, uintptr_t)); // can also be an unsigned long 
 	if (format == 'x' || format == 'X')
-		count += ft_hexa(va_arg(arguments, unsigned int));
+		count += ft_hexa(va_arg(arguments, unsigned int), format);
 	
 	return (count);
 }

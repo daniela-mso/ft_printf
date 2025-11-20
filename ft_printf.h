@@ -16,7 +16,7 @@ int ft_unsigned(unsigned int nbr);
 int ft_adress(uintptr_t ptr);
 int	ft_hexa_len_count(unsigned long long int nbr);
 void	ft_hexa_putnbr(uintptr_t nbr);
-int ft_hexa(unsigned int);
+int ft_hexa(unsigned int nb, char format);
 
 
 

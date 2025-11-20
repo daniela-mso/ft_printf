@@ -5,6 +5,8 @@ int	ft_string(char *s)
 {
 	int	count;
 
+	if (s == NULL)
+		s = "(null)";
 	count = 0;
 	while (s[count] != '\0')
 		count++;
