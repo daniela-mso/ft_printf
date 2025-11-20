@@ -3,7 +3,7 @@
 
 
 
-void	ft_putnbr(unsigned long long int nbr)
+void	ft_putnbr(long nbr)
 {
 	if (nbr < 0)
 	{
@@ -22,10 +22,9 @@ void	ft_putnbr(unsigned long long int nbr)
 int	ft_int(int nbr)
 {
 	int	count;
-	long	n;
 
 	count = ft_len_count(nbr);
-	n = (long)nbr;
+	ft_putnbr(nbr);
 
 	return (count);
 }
@@ -33,4 +32,4 @@ int	ft_int(int nbr)
 
 
  
- 
+  
