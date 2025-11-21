@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danielad <danielad@student.42lausanne.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/21 12:43:49 by danielad          #+#    #+#             */
+/*   Updated: 2025/11/21 12:45:39 by danielad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static int format_specifier(va_list arguments, char format)
+static int	format_specifier(va_list arguments, char format)
 {
 	int	count;
 
@@ -16,22 +28,21 @@ static int format_specifier(va_list arguments, char format)
 	if (format == 'u')
 		count += ft_unsigned(va_arg(arguments, unsigned int));
 	if (format == 'p')
-		count += ft_adress(va_arg(arguments, uintptr_t)); // can also be an unsigned long 
+		count += ft_adress(va_arg(arguments, uintptr_t));
 	if (format == 'x' || format == 'X')
 		count += ft_hexa(va_arg(arguments, unsigned int), format);
-	
 	return (count);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-    va_list arguments; 
-	int	count;
-	int i;
+	va_list	arguments;
+	int		count;
+	int		i;
+
 	va_start(arguments, format);
 	count = 0;
 	i = 0;
-
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
@@ -46,6 +57,3 @@ int ft_printf(const char *format, ...)
 	va_end(arguments);
 	return (count);
 }
-
-
-

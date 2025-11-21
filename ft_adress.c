@@ -1,33 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_adress.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danielad <danielad@student.42lausanne.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/21 12:31:14 by danielad          #+#    #+#             */
+/*   Updated: 2025/11/21 12:31:16 by danielad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-
-
-void	ft_hexa_putnbr(uintptr_t nbr)
-{
-	
-	if (nbr > 15)
-	{
-		ft_hexa_putnbr(nbr / 16);
-		ft_hexa_putnbr(nbr % 16);
-	}
-	else if (nbr > 9 && nbr < 16)
-		ft_char( nbr - 10 + 'a');
-	else
-		ft_char(nbr + '0' );
-}
 
 int	ft_adress(uintptr_t ptr)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (ptr == 0)
 		count += ft_string("(nil)");
 	else
 	{
-	count = ft_hexa_len_count(ptr);
-	ft_string("0x");
-	count += 2;
-	ft_hexa_putnbr(ptr);
+		count = ft_hexa_len_count(ptr);
+		ft_string("0x");
+		count += 2;
+		ft_ptr_putnbr(ptr);
 	}
 	return (count);
 }
